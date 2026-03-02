@@ -7,32 +7,35 @@ This is a repository of my kanata config files for [Kanata](https://github.com/j
 ### Layers
 ##### Layer 0 (Default):
 ```
-  @'    1    2    3    4    5      ✗ ✗     6    7    8    9    0 grv             
-  tab   q    w    f    @r   g      ✗ ✗     j    l    u    y    @:/  [            
-   lctrl a    @o   s    t    d     home ✗      h    n    e    i    p
-     @z    @x   c    v    b    \   end ✗       k    m    @,?  f15            S-up
-      @3mltp                f13    spc   @rsft           _           S-left S-down S-right
+  mlft
+ mlft  S-1   S-;  S-'   S-4  S-5    S-6     ✗    home lmeta end   \     ✗       ✗          _    _     _
+ A-f13 q     @w   f     p    b      S-7     j    l    u    y     =     A-f17   ✗          _    _     _
+ @'#   a     @r   @s    @t   g      S-8     h    n    e    i     -     ✗
+ grv   /     x    c     d    v      A-f15   k    m    z    ;     f11   f12
+                              @spc      @rsft
 
 ```
 
-##### Layer 1 (Symbols, arrow keys and ctrl shortcuts):
+##### Layer 1 (Symbols and arrow keys):
 
 ```
-  _     _    _    _    _    _      _ _     _    _    _    _    _ _             
-  C-tab _    _    C-f  C-r  C-g    _ _     S-8  -    =    @<   S-7  S-6        
-   _     C-a  _    C-s  C-t  C-d   _ _      left down up   right ;
-     C-z   _    C-c  C-v  C-b  _   _ _       S-0  ret  ]    S-]            _
-      _                     _      C-spc C-bspc          _           _    _    _
+✗
+ ✗     ✗     ✗    ✗     ✗    ✗      ✗       ✗    ✗    ✗    ✗     ✗     ✗       ✗          _    _     _
+ ✗     ✗     C-w  @FnE  ✗    ✗      ✗       S-.  S-0  ]    S-]   S-2   ✗       ✗          _    _     _
+ ✗     del   rctl ret   ✗    ✗      ✗       left down up   right S-3   ✗
+ ✗     _     C-x  _     ✗    @sRem  ✗       S-,  S-9  [    S-[   ✗     ✗
+                              _         _
 ```
 
 
-##### Layer 2 (German letters):
+##### Layer 2 (Numbers):
 ```
- _     _    _    _    _    _      ✗ ✗     _    _    _    _    _ _              
-  _     _    _    _    _    _      ✗ ✗     _    _    @ü   _    _    _ 
-   _     @ä   @ö   @ss  _    _     ✗ ✗      _    _    _    _    _
-     _     _    _    _    _    _   ✗ ✗       _    _    _    _              _
-      _                     _      _     _               _           _    _    _
+✗
+ ✗     ✗     ✗    ✗     ✗    ✗      ✗       ✗    ✗    ✗    ✗     ✗     ✗       ✗          _    _     _
+ ✗     A-f13 _    ✗     _    S-7    ✗       _    1    2    3     A-f17 ✗       ✗          _    _     _
+ ✗     @'#   _    ✗     _    S-8    ✗       _    4    5    6     ✗     ✗
+ ✗     grv   _    ✗     _    A-f15  ✗       _    7    8    9     f12   ✗
+                              _         0
 ```
 
 
