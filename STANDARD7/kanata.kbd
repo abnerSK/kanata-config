@@ -1,0 +1,127 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+       
+)
+
+(defsrc
+esc                                                        
+grv   1    2    3    4    5     6   7     8    9    0    -    =   bspc    
+tab   q    w    e    r    t     y   u     i    o    p    [    ]   \                
+caps  a    s    d    f    g     h   j     k    l    ;    '    ret                 
+     lsft  z    x    c    v b   n   m     ,    .    /    rsft                  
+                           spc         ralt  
+)
+
+(defchordsv2
+  (; ')   o     75 first-release  ()
+  (f l)   esc   85 first-release  ()  
+  (f spc) tab   85 first-release  ()    
+  (l ralt) lsft 85 first-release  ()
+  (f ralt) .    85 first-release  ()    
+  (l spc)  ,    85 first-release  ()
+)
+
+;; missing key-combos: C-r, A-w, A-r, A-x
+
+(deflayer base 
+mlft
+mlft  S-1  _    S-'  S-;  S-5   S-6 ✗     S-4  home lmeta end  \   ✗
+A-f13 =    @w   f    p    b     S-7 ✗     j    l    u    y    -   A-f17
+@'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    q
+     /     x    c    d    v grv S-2 ✗     k    m    z    ;
+                           @spc        @rsft
+)
+(deflayer nomods
+mlft
+mlft  S-1  _    S-'  S-;  S-5   S-6 ✗     S-4  home lmeta end  \   ✗
+A-f13 =    @w   f    p    b     S-7 ✗     j    l    u    y    -   A-f17
+@'#   a    r    s    t    g     S-8 ✗     h    n    e    i    q
+     /     x    c    d    v grv S-2 ✗     k    m    z    ;
+                           spc         rsft
+)
+(deflayer Nav
+✗
+✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
+✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  _   ✗
+✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right _
+     _     C-x  C-S-A-v ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[
+                           _           _
+)
+(deflayer Numbers
+✗
+✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
+✗     •    _    ✗    _    •     ✗   ✗     _    1    2    3    •   _
+✗     •    _    ✗    _    •     ✗   ✗     _    4    5    6    ✗
+     •     _    ✗    _    • ✗   ✗   ✗     _    7    8    9
+                           spc         0
+)
+(deflayer Fnextra
+✗
+✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
+✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     _    f21  f22  f23  _   _
+✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     lrld f14  f15  f16  _
+     ✗     ✗    ✗    ✗    ✗ ✗   ✗   ✗     _    f17  f18  f19
+                           pp          f20
+)
+
+
+(defvar
+  tap-time 200
+  hold-time 255
+)
+
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
+(defalias
+  tap (multi
+    (layer-switch nomods)
+    (on-idle 15 tap-vkey to-base)
+  )
+
+  ;; ======= main layers and modifiers =======
+  rsft (tap-hold $tap-time 150 bspc rsft) ;; backspace
+  meta (tap-hold $tap-time 190 lsft lmeta)  ;; tap for right shift, hold for meta
+  w (tap-hold-release $tap-time 190 (multi w @tap) lalt)
+  r (tap-hold-release $tap-time 190 (multi r @tap) lctl)
+  t (tap-hold-release $tap-time 190 (multi t @tap) (layer-while-held Nav) )
+  s (tap-hold-release $tap-time 190 (multi s @tap) (layer-while-held Numbers) )
+  ;; Fn (layer-while-held Fn)
+  FnE (layer-while-held Fnextra)
+
+
+  ;; ======= symbols =======
+  ' (tap-dance 153 (' S-'))
+  [ (tap-hold  $tap-time 133 [ S-[)
+  ] (tap-hold  $tap-time 133 ] S-])
+  ;; / (tap-hold  $tap-time 133 / S-/)
+
+  '# (fork '  3 (lsft  rsft))
+  ;; . (fork . S-/ (lsft rsft))
+  ;; >> (macro S-. S-. C-v)
+  ;; <> (fork  S-,   .  (lsft rsft))
+
+  ml (macro home S-end)
+  ASC (multi ralt rsft rctl)
+
+  ;;  ======= Others =======
+  f11 (tap-hold $tap-time 150 f11 f12) ;; todoist
+
+  spc (fork spc tab (lctrl lalt)) ;; ctrl-space as ctrl-tab, alt-space as alt-tab， meta-space as meta-tab
+  x (fork x C-a (lctrl rctrl))
+  ;; 3mk (macro mltp mltp mltp)
+  ;; meh-v A-S-C-v ;; Remnote: paste as a single rem
+
+  ;; osa (one-shot-release 1500 ralt)
+
+
+
+  ;; ========= German letters =========
+  ss (macro A-(kp2  kp2  kp3))
+  ä  (macro A-(kp2  kp2  kp8))
+  ö  (macro A-(kp2  kp4  kp6))
+  ü  (macro A-(kp2  kp5  kp2))
+
+)

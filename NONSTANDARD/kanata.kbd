@@ -1,0 +1,148 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+)
+
+(defsrc
+esc
+ grv   1     2    3     4    5      6       7    8    9    0     -     =       bspc       ins  home  pgup
+ tab   q     w    e     r    t      y       u    i    o    p     [     ]       \          del  end   pgdn
+ caps  a     s    d     f    g      h       j    k    l    ;     '     ret
+ b     lsft  z    x     c    v      n       m    ,    .    /     rsft  up
+                              spc       ralt
+)
+
+(defchordsv2
+  (l ;)   o     75 first-release  ()
+  (f k)   esc   85 first-release  ()
+  (f spc) tab   85 first-release  ()
+  (k ralt) lsft 85 first-release  ()
+  (f ralt) .    85 first-release  ()    
+  (k spc)  ,    85 first-release  ()
+)
+
+;; missing key-combos: C-r, A-w, A-r, A-x
+
+
+(deflayer base
+  mlft
+ mlft  S-1   S-;  S-'   S-4  S-5    S-6     ✗    home lmeta end   \     ✗       ✗          _    _     _
+ A-f13 q     @w   f     p    b      S-7     j    l    u    y     =     A-f17   ✗          _    _     _
+ @'#   a     @r   @s    @t   g      S-8     h    n    e    i     -     ✗
+ grv   /     x    c     d    v      A-f15   k    m    z    ;     f11   f12
+                              @spc      @rsft
+)
+
+(deflayer nomods
+ mlft
+ mlft  S-1   S-;  S-'   S-4  S-5    S-6     ✗    home lmeta end   \     ✗       ✗          _    _     _
+ A-f13 q     @w   f     p    b      S-7     j    l    u    y     =     A-f17   ✗          _    _     _
+ @'#   a     @r   @s    @t   g      S-8     h    n    e    i     -     ✗
+ grv   /     x    c     d    v      A-f15   k    m    z    ;     f11   f12
+                              spc       rsft
+)
+
+(deflayer Nav
+✗
+ ✗     ✗     ✗    ✗     ✗    ✗      ✗       ✗    ✗    ✗    ✗     ✗     ✗       ✗          _    _     _
+ ✗     ✗     C-w  @FnE  ✗    ✗      ✗       S-.  S-0  ]    S-]   S-2   ✗       ✗          _    _     _
+ ✗     del   rctl ret   ✗    ✗      ✗       left down up   right S-3   ✗
+ ✗     _     C-x  _     ✗    @sRem  ✗       S-,  S-9  [    S-[   ✗     ✗
+                              _         _
+) 
+(deflayer Numbers
+✗
+ ✗     ✗     ✗    ✗     ✗    ✗      ✗       ✗    ✗    ✗    ✗     ✗     ✗       ✗          _    _     _
+ ✗     A-f13 _    ✗     _    S-7    ✗       _    1    2    3     A-f17 ✗       ✗          _    _     _
+ ✗     @'#   _    ✗     _    S-8    ✗       _    4    5    6     ✗     ✗
+ ✗     grv   _    ✗     _    A-f15  ✗       _    7    8    9     f12   ✗
+                              _         0
+)
+
+ 
+
+(deflayer Fnextra
+✗
+ ✗     ✗     ✗    ✗     ✗    ✗      ✗       ✗    ✗    ✗    ✗     ✗     ✗       ✗          _    _     _
+ ✗     ✗     _    _     _    _      ✗       _    f21  f22  f23   _     ✗       ✗          _    _     _
+ ✗     ✗     _    _     _    _      ✗       _    f14  f15  f16   _     ✗
+ ✗     ✗     _    _     _    _      ✗       _    f17  f18  f19   ✗     ✗
+                              _         f20
+)
+
+
+#| firmware layers
+   ✗    ✗    ✗    ✗    ✗          _    f1  f2  f3  _
+   ✗    ✗    ✗    ✗    ✗          _    f4  f5  f6  _
+   ✗    ✗    ✗    ✗    ✗          _    f7  f8  f9  _
+                     _             f10 (tap-hold)
+
+   S-1  _    _     _    _        ✗     _    _     _    _
+   ✗    ✗    ✗    ✗    ✗          ✗    ✗    ✗    ✗    ✗
+   ✗    ✗    ✗    ✗    ✗          ✗    ✗    ✗    ✗    ✗
+                 (one-shot)          _
+|#
+
+
+(defvar
+  tap-time 200
+  hold-time 255
+)
+
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
+(defalias
+  tap (multi
+    (layer-switch nomods)
+    (on-idle 15 tap-vkey to-base)
+  )
+
+  ;; ======= main layers and modifiers =======
+  rsft (tap-hold $tap-time 150 bspc rsft) ;; backspace
+  meta (tap-hold $tap-time 190 lsft lmeta)  ;; tap for right shift, hold for meta
+  w (tap-hold-release $tap-time 190 (multi w @tap) lalt)
+  r (tap-hold-release $tap-time 190 (multi r @tap) rctl)
+  t (tap-hold-release $tap-time 190 (multi t @tap) (layer-while-held Nav) )
+  s (tap-hold-release $tap-time 190 (multi s @tap) (layer-while-held Numbers) )
+  ;; Fn (layer-while-held Fn)
+  FnE (layer-while-held Fnextra)
+
+
+  ;; ======= symbols =======
+  ;; ' (tap-dance 153 (' S-'))
+  sRem C-S-A-v
+  ;; / (tap-hold  $tap-time 133 / S-/)
+
+ 
+  '# (fork '  3 (lsft  rsft))
+  ;; >> (macro S-. S-. C-v)
+  ;; <> (fork  S-,   .  (lsft rsft))
+
+  ml (macro home S-end)
+  ASC (multi ralt rsft rctl)
+
+  ;;  ======= Others =======
+  f11 (tap-hold $tap-time 150 f11 f12) ;; aaaaaa
+
+  spc (fork spc tab (lctl rctl ralt lalt)) ;; ctrlE-space as ctrl-tab, alt-space as alt-tab， meta-space as meta-tab
+  x (fork x C-a (lctrl rctrl))
+
+
+  ;; 3mk (macro tp mltp mltp)!@@@@
+  
+  ;; meh-v A-S-C-v ; te:fork a111111m121ltp 111211e kkk12121kkkltp121 111e remmltp 
+  
+
+  ;; osa (one-qshot-elease 1500 ralt)
+
+
+
+  ;; ========= German letters =========
+  ss (macro A-(kp2  kp2  kp3))
+  ä  (macro A-(kp2  kp2  kp8))
+  ö  (macro A-(kp2  kp4  kp6))
+  ü  (macro A-(kp2  kp5  kp2))
+
+)
