@@ -26,26 +26,26 @@ caps  a    s    d    f    g     h   j     k    l    ;    '    ret
 
 (deflayer base 
 mlft
-mlft  S-1  _    S-'  S-;  S-5   S-6 ✗     S-4  home lmeta end  \   ✗
-A-f13 =    @w   f    p    b     S-7 ✗     j    l    u    y    -   A-f17
-@'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    q
-     /     x    c    d    v grv S-2 ✗     k    m    z    ;
+mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
+A-f13 q    @w   f    p    b     S-7 ✗     j    l    u    y    =   A-f17
+@'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
+     /     x    c    d    v grv A-f15 ✗     k    m    z    ;
                            @spc        @rsft
 )
 (deflayer nomods
 mlft
-mlft  S-1  _    S-'  S-;  S-5   S-6 ✗     S-4  home lmeta end  \   ✗
-A-f13 =    @w   f    p    b     S-7 ✗     j    l    u    y    -   A-f17
-@'#   a    r    s    t    g     S-8 ✗     h    n    e    i    q
-     /     x    c    d    v grv S-2 ✗     k    m    z    ;
+mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
+A-f13 q    @w   f    p    b     S-7 ✗     j    l    u    y    =   A-f17
+@'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
+     /     x    c    d    v grv A-f15 ✗     k    m    z    ;
                            spc         rsft
 )
 (deflayer Nav
 ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
-✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  _   ✗
-✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right _
-     _     C-x  C-S-A-v ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[
+✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  S-2 ✗
+✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right S-3
+     _     C-x  _    ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[
                            _           _
 )
 (deflayer Numbers
