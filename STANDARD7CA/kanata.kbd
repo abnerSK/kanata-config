@@ -9,16 +9,16 @@ esc
 grv   1    2    3    4    5     6   7     8    9    0    -    =   bspc    
 tab   q    w    e    r    t     y   u     i    o    p    [    ]   \                
 caps  a    s    d    f    g     h   j     k    l    ;    '    ret                 
-     lsft  z    x    c    v b   n   m     ,    .    /    rsft up       ←    ↓    →                 
-                           spc         ralt  
+     lsft  z    x    c    v b   n   m     ,    .    /    rsft                  
+                 lmeta      spc         rctl  
 )
 
 (defchordsv2
   (; ')   o     75 first-release  ()
   (f l)   esc   85 first-release  ()  
   (f spc) tab   85 first-release  ()    
-  (l ralt) lsft 85 first-release  ()
-  (f ralt) .    85 first-release  ()    
+  (l rctl) lsft 85 first-release  ()
+  (f rctl) .    85 first-release  ()    
   (l spc)  ,    85 first-release  ()
 )
 
@@ -27,42 +27,42 @@ caps  a    s    d    f    g     h   j     k    l    ;    '    ret
 (deflayer base 
 mlft
 mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
-M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
+M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    =   A-f17
 @'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
-     /     x    c    d    v grv A-f15 ✗     k    m    z    =    ✗        f17  f18  f19
-                           @spc        @rsft
+     /     x    c    d    v grv A-f15 ✗     k    m    z    ;
+                 mlft       @spc        @rsft
 )
 (deflayer nomods
 mlft
-mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
-M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
+M-1   S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
+A-f13 q    @w   f    p    b     S-7 ✗     j    l    u    y    =   A-f17
 @'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
-     /     x    c    d    v grv A-f15 ✗     k    m    z    =    ✗        f17  f18  f19
-                           spc         rsft
+     /     x    c    d    v grv A-f15 ✗     k    m    z    ;
+                 mlft       spc         rsft
 )
 (deflayer Nav
 ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
-✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  ✗ ✗
-✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right ✗
-     _     C-x  _    ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[  ✗        f17  f18  f19
-                           _           _
+✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  S-2 ✗
+✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right S-3
+     _     C-x  _    ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[
+                 mlft       _           _
 )
 (deflayer Numbers
 ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
 ✗     •    _    ✗    _    •     ✗   ✗     _    1    2    3    •   _
 ✗     •    _    ✗    _    •     ✗   ✗     _    4    5    6    ✗
-     •     _    ✗    _    • ✗   ✗   ✗     _    7    8    9    ✗        f17  f18  f19
-                           spc         0
+     •     _    ✗    _    • ✗   ✗   ✗     _    7    8    9
+                 mlft       spc         0
 )
 (deflayer Fnextra
 ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     _    f21  f22  f23  _   _
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     lrld f14  f15  f16  _
-     ✗     ✗    ✗    ✗    ✗ ✗   ✗   ✗     _    f17  f18  f19  ✗        f17  f18  f19
-                           pp          f20
+     ✗     ✗    ✗    ✗    ✗ ✗   ✗   ✗     _    f17  f18  f19
+                 mlft       pp          f20
 )
 
 
@@ -99,7 +99,6 @@ M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
   ;; / (tap-hold  $tap-time 133 / S-/)
 
   '# (fork '  3 (lsft  rsft))
-   ;@ (fork ;  2 (lsft  rsft))
   ;; . (fork . S-/ (lsft rsft))
   ;; >> (macro S-. S-. C-v)
   ;; <> (fork  S-,   .  (lsft rsft))
