@@ -22,28 +22,28 @@ caps  a    s    d    f    g     h   j     k    l    ;    '    ret
   (l spc)  ,    85 first-release  ()
 )
 
-;; missing key-combos: C-r, A-w, A-r, A-x
+;; missing key-combos in this configuration: C-r, A-r
 
 (deflayer base 
 mlft
 mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
-M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
+M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@ A-w
 @'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
-     /     x    c    d    v grv A-f15 ✗     k    m    z    =    ✗        f17  f18  f19
+     /     x    c    d    v grv A-x ✗     k    m    z    =    f16      f17  f18  f19
                            @spc        @rsft
 )
 (deflayer nomods
 mlft
 mlft  S-1  S-;  S-'  S-4  S-5   S-6 ✗     ✗    home lmeta end  \   ✗
-M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
-@'#   a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
-     /     x    c    d    v grv A-f15 ✗     k    m    z    =    ✗        f17  f18  f19
+M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    ;   A-w
+'     a    @r   @s   @t   g     S-8 ✗     h    n    e    i    -
+     /     x    c    d    v grv A-x ✗     k    m    z    =    f16      f17  f18  f19
                            spc         rsft
 )
 (deflayer Nav
 ✗
 ✗     ✗    ✗    ✗    ✗    ✗     ✗   ✗     ✗    ✗    ✗    ✗    ✗   ✗
-✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  ✗ ✗
+✗     _    C-w  @FnE ✗    ✗     ✗   ✗     S-.  S-0  ]    S-]  ✗   ✗
 ✗     del  rctl ret  ✗    ✗     ✗   ✗     left down up   right ✗
      _     C-x  _    ✗    ✗ ✗   ✗   ✗     S-,  S-9  [    S-[  ✗        f17  f18  f19
                            _           _
@@ -93,9 +93,9 @@ M-1   q    @w   f    p    b     S-7 ✗     j    l    u    y    @;@   A-f17
 
 
   ;; ======= symbols =======
-  ' (tap-dance 153 (' S-'))
-  [ (tap-hold  $tap-time 133 [ S-[)
-  ] (tap-hold  $tap-time 133 ] S-])
+  ;; ' (tap-dance 153 (' S-'))
+  ;; [ (tap-hold  $tap-time 133 [ S-[)
+  ;; ] (tap-hold  $tap-time 133 ] S-])
   ;; / (tap-hold  $tap-time 133 / S-/)
 
   '# (fork '  3 (lsft  rsft))
